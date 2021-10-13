@@ -80,7 +80,12 @@ router.get("/users/all", (req, res) => {
         let parsed = JSON.parse(file)
 
         for (var i = 0; i < parsed.length; i++) {
+            let usernames = parsed[i].username
 
+            
+
+            let sorted = usernames.sort()
+            res.send(sorted)
         }
 })
 
