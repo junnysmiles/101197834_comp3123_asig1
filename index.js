@@ -78,10 +78,12 @@ router.get("/users/all", (req, res) => {
         // Accessing data of the file and parsing data
         let parsed = JSON.parse(file)
 
+        // Sort username in ascending order using sort function, and localeCompare
         let sorted = parsed.sort((a, b) => {
             return a.username.localeCompare(b.username)
         })
 
+        // Sending sorted usernames data
         res.send(sorted)
 })
 
