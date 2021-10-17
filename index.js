@@ -37,35 +37,8 @@ router.get("/user", (req, res) => {
     // Setting the URL query
     var userId = req.query.uid
 
-    // Initializing uid variable and setting it as the id in the list
-    let uid = parsed.id
-
-    // Setting JSON response for data being accessed in the list
-    let response = {
-        id: uid,
-        name: data.name,
-        email: data.email,
-        address: data.address.street + ", " + data.address.city
-            + ", " + data.address.zipcode,
-        phone: data.phone
-    }
-
-    // If queried url ID matches the ID accessed in the list, send data specific to the ID being accessed
-    if (userId == uid) {
-        res.send(response)
-    }
-
-        // Setting JSON response for users outside of the ID index
-        let unknown = {
-            Message: "No User Found"
-        }
-        // Sending the response of unknown if queried ID is outside of ID scope
-        res.send(unknown)
-
-
-    // BELOW was my previous solution... after realizing I overcomplicated things // 
     // For loop to go through each index of the json list
-    /*for (var i = 0; i < parsed.length; i++) {
+    for (var i = 0; i < parsed.length; i++) {
         
         // Initializing data variable to access data in the list from 1-10
         let data = parsed[i]
@@ -87,7 +60,14 @@ router.get("/user", (req, res) => {
         if (userId == uid) {
             res.send(response)
         }
-    }*/
+    }
+
+    // Setting JSON response for users outside of the ID index
+    let unknown = {
+        Message: "No User Found"
+    }
+    // Sending the response of unknown if queried ID is outside of ID scope
+    res.send(unknown)
 })
 
 
